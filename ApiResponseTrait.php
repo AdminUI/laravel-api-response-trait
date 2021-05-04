@@ -29,11 +29,11 @@ trait ApiResponseTrait
 
         // Add the meta data to every request
         $data['result']->meta->company = [
-            'website' => env('APP_URL', 'AdminUI Api'),
+            'website' => env('APP_URL', 'Api'),
             'email'   => env('MAIL_FROM_ADDRESS', 'api@adminui.co.uk'),
         ];
         $data['result']->meta->api = [
-            'version' => config('adminui.api-version', '1.0.1'),
+            'version' => config('api-version', '1.0.1'),
             'author'  => 'https://www.adminui.co.uk',
             'email'   => 'support@adminui.co.uk',
         ];
@@ -46,14 +46,17 @@ trait ApiResponseTrait
             'links'   => $data['result']->links ?? null,
             'meta'    => $data['result']->meta ?? null,
         ];
+        
         // Are there any errors
         if (isset($data['errors'])) {
             $responseStructure['errors'] = $data['errors'];
         }
+        
         // Get status code
         if (isset($data['status'])) {
             $statusCode = $data['status'];
         }
+        
         // Is there any exceptions set
         if (isset($data['exception']) && ($data['exception'] instanceof \Error || $data['exception'] instanceof \Exception)) {
             // restrict what is sent back to avoid displaying whole stack
@@ -86,7 +89,6 @@ trait ApiResponseTrait
 
     /*
      * For a single resource result
-     * Just a wrapper to facilitate abstract
      */
     protected function respondWithResource(JsonResource $resource, $message = null, $statusCode = 200, $headers = [])
     {
@@ -101,7 +103,6 @@ trait ApiResponseTrait
 
     /*
      * For a collection result
-     * Just a wrapper to facilitate abstract
      */
     protected function respondWithResourceCollection(ResourceCollection $resourceCollection, $message = null, $statusCode = 200, $headers = [])
     {
