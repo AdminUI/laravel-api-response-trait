@@ -1,12 +1,6 @@
 <?php
-/**
- * User: Bawa, Lakhveer
- * Email: iamdeep.dhaliwal@gmail.com
- * Date: 2020-06-14
- * Time: 12:18 p.m.
- */
 
-namespace AdminUI\AdminUIAdmin\Traits;
+namespace App\Http\Traits;
 
 use Illuminate\Support\Arr;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -144,9 +138,7 @@ trait ApiResponseTrait
 
     /**
      * Respond with success.
-     *
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondSuccess($message = '')
@@ -156,9 +148,7 @@ trait ApiResponseTrait
 
     /**
      * Respond with created.
-     *
      * @param $data
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondCreated($data)
@@ -167,10 +157,8 @@ trait ApiResponseTrait
     }
 
     /**
-     * Respond with no content.
-     *
+     * Respond with no content
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondNoContent($message = 'No Content Found')
@@ -180,9 +168,7 @@ trait ApiResponseTrait
 
     /**
      * Respond with unauthorized.
-     *
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondUnAuthorized($message = 'Unauthorized')
@@ -192,9 +178,7 @@ trait ApiResponseTrait
 
     /**
      * Respond with forbidden.
-     *
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondForbidden($message = 'Forbidden')
@@ -204,9 +188,7 @@ trait ApiResponseTrait
 
     /**
      * Respond with not found.
-     *
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondNotFound($message = 'Not Found')
@@ -214,25 +196,10 @@ trait ApiResponseTrait
         return $this->respondError($message, 404);
     }
 
-    // /**
-    //  * Respond with failed login.
-    //  *
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // protected function respondFailedLogin()
-    // {
-    //     return $this->apiResponse([
-    //         'errors' => [
-    //             'email or password' => 'is invalid',
-    //         ]
-    //     ], 422);
-    // }
 
     /**
      * Respond with internal error.
-     *
      * @param string $message
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondInternalError($message = 'Internal Error')
